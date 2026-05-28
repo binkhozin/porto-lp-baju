@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naura — Baju Muslimah Premium | Modest Fashion</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            cream: '#FDFBF7',
+            sage: '#8B9E82',
+            rose: '#C9A5A5',
+            gold: '#C9A96E',
+            charcoal: '#1a1a1a',
+            warm: '#3D322B',
+            espresso: '#2B2018',
+          },
+          borderRadius: {
+            '2xl': '2rem',
+            '3xl': '2.5rem',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ===== BASE ===== */
+    html { scroll-behavior: smooth; font-feature-settings: 'ss04' 1; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #FDFBF7; color: #1a1a1a; overflow-x: hidden; }
+
+    /* ===== GRAIN TEXTURE OVERLAY ===== */
+    .grain::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 49; pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal { opacity: 0; transform: translateY(4rem); filter: blur(4px); transition: all 0.9s cubic-bezier(0.32,0.72,0,1); }
+    .reveal.revealed { opacity: 1; transform: translateY(0); filter: blur(0); }
+
+    /* ===== MARQUEE ===== */
+    .marquee-track { animation: marquee 30s linear infinite; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ===== GLASS NAV ===== */
+    .nav-glass { backdrop-filter: blur(24px) saturate(180%); background: rgba(255,255,255,0.72); }
+
+    /* ===== DOUBLE-BEZEL CARD ===== */
+    .bezel-outer {
+      background: rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.04);
+      padding: 0.5rem;
+      border-radius: 2rem;
+    }
+    .bezel-inner {
+      background: #ffffff;
+      border-radius: calc(2rem - 0.5rem);
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.8), 0 15px 30px -12px rgba(0,0,0,0.04);
+      overflow: hidden;
+    }
+
+    /* ===== BUTTON MICRO ===== */
+    .btn-magnetic {
+      transition: transform 0.4s cubic-bezier(0.32,0.72,0,1), box-shadow 0.4s cubic-bezier(0.32,0.72,0,1);
+    }
+    .btn-magnetic:hover { transform: scale(0.98); }
+    .btn-magnetic:active { transform: scale(0.95); }
+    .btn-magnetic:hover .btn-arrow { transform: translate(4px, -1px) scale(1.05); transition: transform 0.4s cubic-bezier(0.32,0.72,0,1); }
+
+    /* ===== HAMBURGER ===== */
+    .hamburger-line { transition: all 0.4s cubic-bezier(0.32,0.72,0,1); transform-origin: center; }
+    .hamburger.active .hamburger-line:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.active .hamburger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.active .hamburger-line:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* ===== MENU OVERLAY ===== */
+    .menu-link { transform: translateY(3rem); opacity: 0; transition: all 0.6s cubic-bezier(0.32,0.72,0,1); }
+    .menu-overlay.active .menu-link { transform: translateY(0); opacity: 1; }
+    .menu-link:nth-child(1) { transition-delay: 80ms; }
+    .menu-link:nth-child(2) { transition-delay: 140ms; }
+    .menu-link:nth-child(3) { transition-delay: 200ms; }
+    .menu-link:nth-child(4) { transition-delay: 260ms; }
+    .menu-link:nth-child(5) { transition-delay: 320ms; }
+
+    /* ===== PRODUCT HOVER ===== */
+    .product-card:hover .product-img { transform: scale(1.04); transition: transform 0.7s cubic-bezier(0.32,0.72,0,1); }
+    .product-img { transition: transform 0.7s cubic-bezier(0.32,0.72,0,1); }
+
+    /* ===== KINETIC MARQUEE HOVER ===== */
+    .marquee-container:hover .marquee-track { animation-play-state: paused; }
+  </style>
+</head>
+<body>
+  <!-- Grain overlay -->
+  <div class="grain"></div>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="fixed top-6 inset-x-0 z-50 flex justify-center pointer-events-none">
+    <div class="nav-glass pointer-events-auto rounded-full border border-white/40 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.06)]">
+      <div class="flex items-center gap-6 pl-8 pr-2 py-2.5">
+        <span class="font-display text-xl font-bold tracking-tight text-warm">Naura</span>
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-charcoal/60">
+          <a href="#koleksi" class="hover:text-charcoal transition-colors duration-300">Koleksi</a>
+          <a href="#keunggulan" class="hover:text-charcoal transition-colors duration-300">Keunggulan</a>
+          <a href="#testimoni" class="hover:text-charcoal transition-colors duration-300">Testimoni</a>
+        </div>
+        <a href="#cta" class="hidden md:flex items-center gap-1.5 bg-warm text-cream rounded-full px-5 py-2.5 text-sm font-semibold btn-magnetic transition-colors hover:bg-espresso">
+          Pesan Sekarang
+          <span class="btn-arrow w-6 h-6 rounded-full bg-white/15 flex items-center justify-center transition-transform">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </span>
+        </a>
+        <!-- Hamburger -->
+        <button class="hamburger md:hidden flex flex-col gap-1.5 p-3 -mr-1 rounded-full hover:bg-black/5 transition-colors" onclick="toggleMenu()" aria-label="Menu">
+          <span class="hamburger-line w-5 h-px bg-charcoal block"></span>
+          <span class="hamburger-line w-5 h-px bg-charcoal block"></span>
+          <span class="hamburger-line w-5 h-px bg-charcoal block"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="menu-overlay" class="menu-overlay fixed inset-0 z-40 nav-glass opacity-0 invisible transition-all duration-500 flex items-center justify-center" style="backdrop-filter: blur(40px) saturate(180%); background: rgba(253,251,247,0.88);">
+    <div class="flex flex-col items-center gap-8 text-center">
+      <a href="#koleksi" class="menu-link font-display text-4xl md:text-5xl text-warm hover:text-sage transition-colors" onclick="toggleMenu()">Koleksi</a>
+      <a href="#keunggulan" class="menu-link font-display text-4xl md:text-5xl text-warm hover:text-sage transition-colors" onclick="toggleMenu()">Keunggulan</a>
+      <a href="#testimoni" class="menu-link font-display text-4xl md:text-5xl text-warm hover:text-sage transition-colors" onclick="toggleMenu()">Testimoni</a>
+      <a href="#cta" class="menu-link font-display text-4xl md:text-5xl text-warm hover:text-sage transition-colors" onclick="toggleMenu()">Pesan</a>
+    </div>
+  </div>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="min-h-[100dvh] flex items-center pt-24 pb-16 md:pt-0 md:pb-0">
+    <div class="w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <!-- Left: Text -->
+        <div class="lg:pr-8">
+          <div class="reveal">
+            <span class="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold bg-sage/10 text-sage mb-8">Modest Fashion Premium</span>
+            <h1 class="font-display text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-black tracking-tight leading-[0.92] text-warm mb-6">
+              Menutup<br>Aurat
+            </h1>
+            <p class="text-lg md:text-xl text-charcoal/50 max-w-[42ch] font-light leading-relaxed mb-10">
+              Koleksi busana muslimah dirancang dengan material pilihan dan potongan yang menghormati, agar setiap langkahmu membawa ketenangan.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a href="#koleksi" class="inline-flex items-center gap-2 bg-warm text-cream rounded-full px-8 py-4 text-sm font-semibold btn-magnetic hover:bg-espresso transition-colors">
+                Jelajahi Koleksi
+                <span class="btn-arrow w-7 h-7 rounded-full bg-white/15 flex items-center justify-center">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+              </a>
+              <a href="#cta" class="inline-flex items-center rounded-full px-8 py-4 text-sm font-semibold text-warm border border-warm/15 hover:border-warm/30 hover:bg-warm/3 transition-all duration-300">
+                WhatsApp Order
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Image -->
+        <div class="reveal reveal-delay" style="transition-delay: 150ms;">
+          <div class="bezel-outer lg:ml-auto max-w-lg">
+            <div class="bezel-inner aspect-[3/4]">
+              <img src="https://picsum.photos/seed/naura-model/600/800" alt="Model Naura Collection" class="w-full h-full object-cover" loading="eager">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MARQUEE ==================== -->
+  <div class="reveal border-y border-black/5 py-5 overflow-hidden marquee-container">
+    <div class="marquee-track flex gap-16 whitespace-nowrap text-sm font-medium tracking-[0.15em] uppercase text-charcoal/30">
+      <span>Koleksi Terbaru</span><span class="text-sage/40">&middot;</span>
+      <span>Gamis Premium</span><span class="text-sage/40">&middot;</span>
+      <span>Hijab Instan</span><span class="text-sage/40">&middot;</span>
+      <span>Tunik Elegan</span><span class="text-sage/40">&middot;</span>
+      <span>Kaftan Eksklusif</span><span class="text-sage/40">&middot;</span>
+      <span>Koleksi Terbaru</span><span class="text-sage/40">&middot;</span>
+      <span>Gamis Premium</span><span class="text-sage/40">&middot;</span>
+      <span>Hijab Instan</span><span class="text-sage/40">&middot;</span>
+      <span>Tunik Elegan</span><span class="text-sage/40">&middot;</span>
+      <span>Kaftan Eksklusif</span><span class="text-sage/40">&middot;</span>
+      <span>Koleksi Terbaru</span><span class="text-sage/40">&middot;</span>
+      <span>Gamis Premium</span><span class="text-sage/40">&middot;</span>
+      <span>Hijab Instan</span><span class="text-sage/40">&middot;</span>
+      <span>Tunik Elegan</span><span class="text-sage/40">&middot;</span>
+      <span>Kaftan Eksklusif</span><span class="text-sage/40">&middot;</span>
+    </div>
+  </div>
+
+  <!-- ==================== KOLEKSI ==================== -->
+  <section id="koleksi" class="py-28 md:py-36">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+      <!-- Section header -->
+      <div class="reveal mb-16 md:mb-20 max-w-2xl">
+        <span class="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold bg-rose/10 text-rose mb-6">Koleksi</span>
+        <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05] text-warm mb-4">
+          Rancangan yang<br>Menjaga Kehormatan
+        </h2>
+        <p class="text-charcoal/50 leading-relaxed max-w-[58ch] text-lg font-light">
+          Setiap potongan dijahit dengan presisi, dari kain pilihan yang nyaman sepanjang hari.
+        </p>
+      </div>
+
+      <!-- Products Grid: Asymmetric Bento -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <!-- Featured: spans 7 cols, taller -->
+        <div class="reveal md:col-span-7 md:row-span-2 product-card">
+          <div class="bezel-outer h-full">
+            <div class="bezel-inner h-full flex flex-col">
+              <div class="flex-1 overflow-hidden">
+                <img src="https://picsum.photos/seed/naura-gamis/600/800" alt="Gamis Naura Serenity" class="product-img w-full h-full object-cover">
+              </div>
+              <div class="px-6 py-5 border-t border-black/3">
+                <div class="flex justify-between items-start gap-3">
+                  <div>
+                    <p class="text-xs uppercase tracking-[0.15em] text-sage font-semibold mb-1">Bestseller</p>
+                    <h3 class="font-display text-xl font-bold tracking-tight text-warm">Gamis Serenity</h3>
+                    <p class="text-sm text-charcoal/45 mt-0.5">Cotton premium, rincian bordir halus</p>
+                  </div>
+                  <span class="text-lg font-bold text-warm">Rp 589.000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Secondary: spans 5 cols -->
+        <div class="reveal md:col-span-5 product-card" style="transition-delay: 80ms;">
+          <div class="bezel-outer h-full">
+            <div class="bezel-inner h-full flex flex-col">
+              <div class="overflow-hidden">
+                <img src="https://picsum.photos/seed/naura-tunik/600/800" alt="Tunik Naura" class="product-img w-full aspect-[4/5] object-cover">
+              </div>
+              <div class="px-5 py-4 border-t border-black/3">
+                <div class="flex justify-between items-start gap-3">
+                  <div>
+                    <h3 class="font-display text-lg font-bold tracking-tight text-warm">Tunik Zahra</h3>
+                    <p class="text-sm text-charcoal/45 mt-0.5">Linen, potongan A-line anggun</p>
+                  </div>
+                  <span class="text-base font-bold text-warm">Rp 349.000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: three smaller items -->
+        <div class="reveal md:col-span-4 product-card" style="transition-delay: 120ms;">
+          <div class="bezel-outer h-full">
+            <div class="bezel-inner h-full flex flex-col">
+              <div class="overflow-hidden">
+                <img src="https://picsum.photos/seed/naura-hijab/600/600" alt="Hijab Instan Naura" class="product-img w-full aspect-square object-cover">
+              </div>
+              <div class="px-5 py-4 border-t border-black/3">
+                <div class="flex justify-between items-start gap-2">
+                  <div>
+                    <h3 class="font-display text-lg font-bold tracking-tight text-warm">Hijab Sava</h3>
+                    <p class="text-sm text-charcoal/45">Instan, 12 varian warna</p>
+                  </div>
+                  <span class="text-base font-bold text-warm">Rp 129.000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal md:col-span-4 product-card" style="transition-delay: 160ms;">
+          <div class="bezel-outer h-full">
+            <div class="bezel-inner h-full flex flex-col">
+              <div class="overflow-hidden">
+                <img src="https://picsum.photos/seed/naura-kaftan/600/600" alt="Kaftan Naura" class="product-img w-full aspect-square object-cover">
+              </div>
+              <div class="px-5 py-4 border-t border-black/3">
+                <div class="flex justify-between items-start gap-2">
+                  <div>
+                    <h3 class="font-display text-lg font-bold tracking-tight text-warm">Kaftan Aqila</h3>
+                    <p class="text-sm text-charcoal/45">Satin flowy, untuk acara istimewa</p>
+                  </div>
+                  <span class="text-base font-bold text-warm">Rp 489.000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal md:col-span-4 product-card" style="transition-delay: 200ms;">
+          <div class="bezel-outer h-full">
+            <div class="bezel-inner h-full flex flex-col">
+              <div class="overflow-hidden">
+                <img src="https://picsum.photos/seed/naura-set/600/600" alt="Set Naura" class="product-img w-full aspect-square object-cover">
+              </div>
+              <div class="px-5 py-4 border-t border-black/3">
+                <div class="flex justify-between items-start gap-2">
+                  <div>
+                    <p class="text-xs uppercase tracking-[0.15em] text-rose font-semibold mb-1">Baru</p>
+                    <h3 class="font-display text-lg font-bold tracking-tight text-warm">Set Gamis + Hijab</h3>
+                    <p class="text-sm text-charcoal/45">Paket lengkap, hemat 17%</p>
+                  </div>
+                  <span class="text-base font-bold text-warm">Rp 649.000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== KEUNGGULAN (Zig-Zag) ==================== -->
+  <section id="keunggulan" class="py-28 md:py-36 border-t border-black/5">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+
+      <!-- Row 1: Image left, text right -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center mb-32 lg:mb-40">
+        <div class="reveal order-2 lg:order-1">
+          <div class="bezel-outer">
+            <div class="bezel-inner aspect-[4/5]">
+              <img src="https://picsum.photos/seed/naura-fabric/800/1000" alt="Material premium" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+        <div class="reveal order-1 lg:order-2" style="transition-delay: 100ms;">
+          <span class="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold bg-gold/10 text-gold mb-6">Material</span>
+          <h3 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.1] text-warm mb-5">
+            Bahan yang<br>Bernapas
+          </h3>
+          <p class="text-charcoal/50 leading-relaxed max-w-[52ch] text-lg font-light">
+            Kami hanya menggunakan kain pilihan &mdash; katun premium, linen alami, dan satin silk yang lembut di kulit, adem dipakai seharian, dan tetap jatuh anggun.
+          </p>
+        </div>
+      </div>
+
+      <!-- Row 2: Text left, image right -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+        <div class="reveal">
+          <span class="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold bg-sage/10 text-sage mb-6">Ukuran</span>
+          <h3 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.1] text-warm mb-5">
+            Dibuat untuk<br>Setiap Perempuan
+          </h3>
+          <p class="text-charcoal/50 leading-relaxed max-w-[52ch] text-lg font-light">
+            Tersedia dalam ukuran S hingga 3XL dengan panduan ukuran akurat. Setiap siluet dirancang khusus agar proporsinya pas di setiap bentuk tubuh.
+          </p>
+        </div>
+        <div class="reveal" style="transition-delay: 100ms;">
+          <div class="bezel-outer">
+            <div class="bezel-inner aspect-[4/5]">
+              <img src="https://picsum.photos/seed/naura-size/800/1000" alt="Ukuran lengkap" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TESTIMONI ==================== -->
+  <section id="testimoni" class="py-28 md:py-36 bg-warm text-cream">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+      <div class="reveal mb-16 md:mb-20">
+        <span class="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold bg-cream/10 text-gold mb-6">Testimoni</span>
+        <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05] text-cream mb-4">
+          Yang Mereka<br>Rasakan
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        <!-- Testimoni 1 -->
+        <div class="reveal">
+          <div class="relative">
+            <svg class="text-gold/60 mb-6" width="40" height="32" viewBox="0 0 40 32" fill="currentColor" opacity="0.6"><path d="M0 32L16 0h-8L0 24v8zm24 0L40 0h-8L24 24v8z"/></svg>
+            <p class="text-cream/70 text-lg leading-relaxed font-light mb-8">
+              Gamis Serenity benar-benar nyaman dipakai dari pagi sampai sore. Bahannya adem, nggak bikin gerah. Potongannya juga bikin percaya diri.
+            </p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-cream/15">
+                <img src="https://picsum.photos/seed/naura-testi1/100/100" alt="Rania" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <p class="font-bold text-cream">Rania Maulida</p>
+                <p class="text-sm text-cream/40">Surabaya</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimoni 2 -->
+        <div class="reveal" style="transition-delay: 100ms;">
+          <div class="relative">
+            <svg class="text-gold/60 mb-6" width="40" height="32" viewBox="0 0 40 32" fill="currentColor" opacity="0.6"><path d="M0 32L16 0h-8L0 24v8zm24 0L40 0h-8L24 24v8z"/></svg>
+            <p class="text-cream/70 text-lg leading-relaxed font-light mb-8">
+              Saya susah cari baju muslim yang stylish tapi tetap syar'i. Naura jawabannya. Tunik Zahra favorit saya &mdash; bisa dipakai kerja, arisan, atau kondangan.
+            </p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-cream/15">
+                <img src="https://picsum.photos/seed/naura-testi2/100/100" alt="Nadira" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <p class="font-bold text-cream">Nadira Putri</p>
+                <p class="text-sm text-cream/40">Jakarta</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimoni 3 -->
+        <div class="reveal" style="transition-delay: 200ms;">
+          <div class="relative">
+            <svg class="text-gold/60 mb-6" width="40" height="32" viewBox="0 0 40 32" fill="currentColor" opacity="0.6"><path d="M0 32L16 0h-8L0 24v8zm24 0L40 0h-8L24 24v8z"/></svg>
+            <p class="text-cream/70 text-lg leading-relaxed font-light mb-8">
+              Pengiriman cepat banget &mdash; pesan pagi, sore udah sampai. Packaging-nya juga cantik, cocok banget buat kado. Bakal repeat order terus.
+            </p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-cream/15">
+                <img src="https://picsum.photos/seed/naura-testi3/100/100" alt="Khalisa" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <p class="font-bold text-cream">Khalisa Azzahra</p>
+                <p class="text-sm text-cream/40">Bandung</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section id="cta" class="py-28 md:py-36">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+      <div class="reveal max-w-3xl mx-auto text-center">
+        <span class="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold bg-rose/10 text-rose mb-8">Hubungi Kami</span>
+        <h2 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.95] text-warm mb-6">
+          Temukan Busana<br>Terbaikmu
+        </h2>
+        <p class="text-charcoal/50 text-lg md:text-xl leading-relaxed max-w-[48ch] mx-auto mb-12 font-light">
+          Konsultasi ukuran, pilih warna, atau tanya koleksi &mdash; langsung via WhatsApp. Kami siap membantu.
+        </p>
+        <a href="https://wa.me/6281234567890?text=Assalamu%27alaikum%2C%20saya%20tertarik%20dengan%20koleksi%20Naura" target="_blank" rel="noopener" class="inline-flex items-center gap-3 bg-warm text-cream rounded-full px-10 py-5 text-base font-semibold btn-magnetic hover:bg-espresso transition-colors shadow-[0_15px_40px_-12px_rgba(58,50,43,0.25)]">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat via WhatsApp
+          <span class="btn-arrow w-8 h-8 rounded-full bg-white/15 flex items-center justify-center">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="border-t border-black/5 py-12">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <span class="font-display text-xl font-bold tracking-tight text-warm">Naura</span>
+        <p class="text-sm text-charcoal/35">
+          &copy; 2025 Naura. Seluruh hak cipta dilindungi.
+        </p>
+        <div class="flex gap-6">
+          <a href="#" class="text-sm text-charcoal/40 hover:text-warm transition-colors">Instagram</a>
+          <a href="#" class="text-sm text-charcoal/40 hover:text-warm transition-colors">TikTok</a>
+          <a href="#" class="text-sm text-charcoal/40 hover:text-warm transition-colors">Shopee</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // Hamburger menu toggle
+    function toggleMenu() {
+      const hamburger = document.querySelector('.hamburger');
+      const overlay = document.getElementById('menu-overlay');
+      hamburger.classList.toggle('active');
+      overlay.classList.toggle('active');
+      if (overlay.classList.contains('active')) {
+        overlay.style.opacity = '1';
+        overlay.style.visibility = 'visible';
+      } else {
+        overlay.style.opacity = '0';
+        overlay.style.visibility = 'hidden';
+      }
+    }
+
+    // Intersection Observer for scroll reveals
+    const observerOptions = { root: null, rootMargin: '0px 0px -60px 0px', threshold: 0.12 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
