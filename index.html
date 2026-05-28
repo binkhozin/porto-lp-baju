@@ -39,83 +39,10 @@
   </script>
 
   <style>
-    /* ===== PRODUCT ILLUSTRATIONS ===== */
-    .bg-illustration-hero {
-      background: linear-gradient(135deg, #FFF8F0 0%, #F5EDE0 30%, #E8D5C4 100%);
-      position: relative; overflow: hidden;
+    /* ===== PRODUCT IMAGES ===== */
+    .product-img-cover {
+      width: 100%; height: 100%; object-fit: cover; display: block;
     }
-    .bg-illustration-hero::after { content:''; position:absolute; inset:0;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23C9A96E;stop-opacity:0.15'/%3E%3Cstop offset='100%25' style='stop-color:%238B9E82;stop-opacity:0.08'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cellipse cx='200' cy='200' rx='180' ry='220' fill='url(%23g1)'/%3E%3Ccircle cx='350' cy='420' r='140' fill='%23C9A96E' opacity='0.06'/%3E%3Cpath d='M80 580 Q200 320 320 580' stroke='%23C9A96E' stroke-width='0.5' fill='none' opacity='0.2'/%3E%3C/svg%3E");
-      background-size: cover; background-position: center;
-    }
-    .bg-illustration-gamis {
-      background: linear-gradient(160deg, #FDF2F2 0%, #F5E5E5 50%, #E8D5D5 100%);
-      position: relative; overflow: hidden;
-    }
-    .bg-illustration-gamis::after { content:''; position:absolute; inset:0;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Cpath d='M150 40 L180 180 Q200 260 180 360 L120 360 Q100 260 120 180 Z' fill='%23C9A5A5' opacity='0.15'/%3E%3Cpath d='M130 100 Q150 80 170 100' stroke='%23C9A96E' stroke-width='1.5' fill='none' opacity='0.3'/%3E%3Ccircle cx='250' cy='60' r='80' fill='%23C9A96E' opacity='0.04'/%3E%3C/svg%3E");
-      background-size: cover; background-position: center;
-    }
-    .bg-illustration-tunik {
-      background: linear-gradient(150deg, #F5F7F2 0%, #E8F0E4 50%, #D8E8D4 100%);
-      position: relative; overflow: hidden;
-    }
-    .bg-illustration-tunik::after { content:''; position:absolute; inset:0;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Cpath d='M80 10 L220 10 Q240 80 200 300 L100 300 Q60 80 80 10' fill='%238B9E82' opacity='0.12'/%3E%3Cpath d='M120 120 L180 120' stroke='%23C9A96E' stroke-width='1' opacity='0.3'/%3E%3Ccircle cx='60' cy='350' r='70' fill='%23C9A96E' opacity='0.04'/%3E%3C/svg%3E");
-      background-size: cover; background-position: center;
-    }
-    .bg-illustration-hijab {
-      background: linear-gradient(140deg, #FDFAF3 0%, #FAF3E0 50%, #F0E5C8 100%);
-      position: relative; overflow: hidden;
-    }
-    .bg-illustration-hijab::after { content:''; position:absolute; inset:0;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cpath d='M150 80 Q200 40 230 100 Q240 160 200 200 Q180 220 150 200 Q120 220 100 200 Q60 160 70 100 Q100 40 150 80' fill='%23C9A96E' opacity='0.1'/%3E%3Cpath d='M150 70 Q190 50 210 100 Q215 140 190 180' stroke='%23C9A96E' stroke-width='1.5' fill='none' opacity='0.25'/%3E%3C/svg%3E");
-      background-size: cover; background-position: center;
-    }
-    .bg-illustration-kaftan {
-      background: linear-gradient(180deg, #2D2D2D 0%, #1E1E1E 100%);
-      position: relative; overflow: hidden;
-    }
-    .bg-illustration-kaftan::after { content:''; position:absolute; inset:0;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cpath d='M80 0 L220 0 Q240 80 240 200 Q240 280 150 300 Q60 280 60 200 Q60 80 80 0' fill='%23C9A96E' opacity='0.08'/%3E%3Cpath d='M110 60 L190 60' stroke='%23C9A96E' stroke-width='0.5' opacity='0.2'/%3E%3Ccircle cx='250' cy='250' r='100' fill='%23C9A96E' opacity='0.03'/%3E%3C/svg%3E");
-      background-size: cover; background-position: center;
-    }
-    .bg-illustration-set {
-      background: linear-gradient(135deg, #FFF8F0 0%, #F0EBE0 50%, #E8E0D0 100%);
-      position: relative; overflow: hidden;
-    }
-    .bg-illustration-set::after { content:''; position:absolute; inset:0;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect x='40' y='40' width='100' height='160' rx='8' fill='%238B9E82' opacity='0.1'/%3E%3Crect x='160' y='60' width='100' height='80' rx='8' fill='%23C9A96E' opacity='0.1'/%3E%3Crect x='160' y='160' width='100' height='100' rx='8' fill='%23C9A5A5' opacity='0.1'/%3E%3C/svg%3E");
-      background-size: cover; background-position: center;
-    }
-    .bg-illustration-fabric {
-      background: linear-gradient(160deg, #FAEFEF 0%, #F0DEDE 50%, #E5CCCC 100%);
-      position: relative; overflow: hidden;
-    }
-    .bg-illustration-fabric::after { content:''; position:absolute; inset:0;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 250'%3E%3Cdefs%3E%3Cpattern id='weave' x='0%25' y='0%25' width='40' height='40' patternUnits='userSpaceOnUse'%3E%3Cpath d='M0 20 Q10 0 20 20 T40 20' stroke='%23C9A96E' stroke-width='0.8' fill='none' opacity='0.25'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='200' height='250' fill='url(%23weave)'/%3E%3C/svg%3E");
-      background-size: cover; background-position: center;
-    }
-    .bg-illustration-size {
-      background: linear-gradient(150deg, #F5F7F2 0%, #E8F0E4 50%, #D8E8D4 100%);
-      position: relative; overflow: hidden;
-    }
-    .bg-illustration-size::after { content:''; position:absolute; inset:0;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 250'%3E%3Ccircle cx='100' cy='125' r='80' fill='none' stroke='%238B9E82' stroke-width='1' stroke-dasharray='4 6' opacity='0.25'/%3E%3Ccircle cx='100' cy='125' r='50' fill='none' stroke='%23C9A96E' stroke-width='1.5' opacity='0.3'/%3E%3Cline x1='100' y1='75' x2='100' y2='45' stroke='%23C9A96E' stroke-width='1' opacity='0.2'/%3E%3Cline x1='150' y1='125' x2='180' y2='125' stroke='%23C9A96E' stroke-width='1' opacity='0.2'/%3E%3C/svg%3E");
-      background-size: cover; background-position: center;
-    }
-    .illustration-overlay {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      z-index: 1;
-    }
-    .illustration-label {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem; font-weight: 600;
-      color: #2D2D2D; opacity: 0.7;
-      text-align: center; letter-spacing: 0.02em;
-    }
-    .illustration-label-light { color: #C9A96E; }
 
     /* ===== RESPONSIVE ===== */
     html { scroll-behavior: smooth; font-feature-settings: 'ss04' 1; }
@@ -259,11 +186,7 @@
         <div class="reveal reveal-delay" style="transition-delay: 150ms;">
           <div class="bezel-outer lg:ml-auto max-w-lg">
             <div class="bezel-inner aspect-[3/4]">
-              <div class="bg-illustration-hero w-full h-full">
-                <div class="illustration-overlay">
-                  <span class="illustration-label" style="font-size:2rem">Naura Collection</span>
-                </div>
-              </div>
+              <img class="product-img-cover" src="https://loremflickr.com/800/1000/muslim,fashion,dress" alt="Naura Collection">
             </div>
           </div>
         </div>
@@ -314,11 +237,7 @@
           <div class="bezel-outer h-full">
             <div class="bezel-inner h-full flex flex-col">
               <div class="flex-1 overflow-hidden">
-                <div class="bg-illustration-gamis w-full h-full">
-                  <div class="illustration-overlay">
-                    <span class="illustration-label">Gamis Serenity</span>
-                  </div>
-                </div>
+                <img class="product-img-cover" src="https://loremflickr.com/800/1000/gamis,muslim,dress" alt="Gamis Serenity">
               </div>
               <div class="px-6 py-5 border-t border-black/3">
                 <div class="flex justify-between items-start gap-3">
@@ -339,11 +258,7 @@
           <div class="bezel-outer h-full">
             <div class="bezel-inner h-full flex flex-col">
               <div class="overflow-hidden">
-                <div class="bg-illustration-tunik w-full h-full">
-                  <div class="illustration-overlay">
-                    <span class="illustration-label">Tunik Naura</span>
-                  </div>
-                </div>
+                <img class="product-img-cover" src="https://loremflickr.com/800/1000/tunic,blouse,muslim" alt="Tunik Zahra">
               </div>
               <div class="px-5 py-4 border-t border-black/3">
                 <div class="flex justify-between items-start gap-3">
@@ -363,11 +278,7 @@
           <div class="bezel-outer h-full">
             <div class="bezel-inner h-full flex flex-col">
               <div class="overflow-hidden">
-                <div class="bg-illustration-hijab w-full h-full">
-                  <div class="illustration-overlay">
-                    <span class="illustration-label">Hijab Instan</span>
-                  </div>
-                </div>
+                <img class="product-img-cover" src="https://loremflickr.com/800/1000/hijab,headscarf,fashion" alt="Hijab Sava">
               </div>
               <div class="px-5 py-4 border-t border-black/3">
                 <div class="flex justify-between items-start gap-2">
@@ -386,11 +297,7 @@
           <div class="bezel-outer h-full">
             <div class="bezel-inner h-full flex flex-col">
               <div class="overflow-hidden">
-                <div class="bg-illustration-kaftan w-full h-full">
-                  <div class="illustration-overlay">
-                    <span class="illustration-label illustration-label-light">Kaftan Naura</span>
-                  </div>
-                </div>
+                <img class="product-img-cover" src="https://loremflickr.com/800/1000/kaftan,dress,elegant" alt="Kaftan Aqila">
               </div>
               <div class="px-5 py-4 border-t border-black/3">
                 <div class="flex justify-between items-start gap-2">
@@ -409,11 +316,7 @@
           <div class="bezel-outer h-full">
             <div class="bezel-inner h-full flex flex-col">
               <div class="overflow-hidden">
-                <div class="bg-illustration-set w-full h-full">
-                  <div class="illustration-overlay">
-                    <span class="illustration-label">Set Eksklusif</span>
-                  </div>
-                </div>
+                <img class="product-img-cover" src="https://loremflickr.com/800/1000/muslim,set,outfit" alt="Set Eksklusif">
               </div>
               <div class="px-5 py-4 border-t border-black/3">
                 <div class="flex justify-between items-start gap-2">
@@ -441,7 +344,7 @@
         <div class="reveal order-2 lg:order-1">
           <div class="bezel-outer">
             <div class="bezel-inner aspect-[4/5]">
-              <div class="bg-illustration-fabric w-full h-full"></div>
+              <img class="product-img-cover" src="https://loremflickr.com/800/1000/fabric,textile,cotton" alt="Material">
             </div>
           </div>
         </div>
@@ -470,7 +373,7 @@
         <div class="reveal" style="transition-delay: 100ms;">
           <div class="bezel-outer">
             <div class="bezel-inner aspect-[4/5]">
-              <div class="bg-illustration-size w-full h-full"></div>
+              <img class="product-img-cover" src="https://loremflickr.com/800/1000/fashion,size,measure" alt="Ukuran">
             </div>
           </div>
         </div>
